@@ -1,0 +1,64 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = attributeName; 
+            name = attributeName; 
+            prototypeName = varchar50; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = changesetID; 
+            name = changesetID; 
+            prototypeName = id; 
+        }, 
+        {allowsNull = N; columnName = entityID; name = entityID; prototypeName = id; }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {
+            allowsNull = Y; 
+            columnName = toOneEntityID; 
+            name = toOneEntityID; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = valueType; 
+            name = valueType; 
+            prototypeName = charFlag; 
+        }
+    ); 
+    attributesUsedForLocking = (attributeName, changesetID, entityID, id, toOneEntityID, valueType); 
+    className = "er.sync.eo.ERSyncChangeToOne"; 
+    classProperties = (attributeName, changeEntity, changeset, toOneValue, valueType); 
+    externalName = ERSyncChangeValue; 
+    fetchSpecificationDictionary = {}; 
+    name = ERSyncChangeToOne; 
+    parent = ERSyncChangeValue; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = ERSyncEntity; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = entityID; }); 
+            name = changeEntity; 
+        }, 
+        {
+            destination = ERSyncChangeset; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = changesetID; }); 
+            name = changeset; 
+        }, 
+        {
+            destination = ERSyncEntity; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = toOneEntityID; }); 
+            name = toOneValue; 
+        }
+    ); 
+    restrictingQualifier = "valueType = \"R\""; 
+}

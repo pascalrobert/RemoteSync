@@ -1,0 +1,43 @@
+LoginForm: WOForm {
+	id = "loginForm";
+	action = doLogin;
+	name = "loginForm";
+}
+
+UserNameField: WOTextField {
+	value = userName;
+	id    = "userName";
+	name  = "userName";
+	class = "logInTextField";
+}
+
+PasswordField: WOPasswordField {
+	value = password;
+	id    = "password";
+	name  = "password";
+	class = "logInTextField";
+}
+
+LoginButton: WOSubmitButton	{
+	id               = "loginButton";
+	action = doLogin;
+	value = "Login";
+}
+
+HasErrorMessage: WOConditional {
+	condition = errorMessage;
+}
+
+ErrorMessage: WOString {
+	value = errorMessage;
+	escapeHTML = false;
+}
+
+signUpLink : WOHyperlink
+{
+	pageName="SignupPage";
+}
+
+appName : WOString {
+  value = application.name;
+}

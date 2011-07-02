@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wodefinitions>
+    <wo class="CadrePageFrame" wocomponentcontent="false">
+        <binding name="metaRefresh"/>
+        <binding name="pageTitle"/>
+        <binding name="secondaryPageTitle"/>
+        <binding defaults="Boolean" name="contentOnly"/>
+     <binding name="onLoad"/>
+    <binding name="onUnload"/>
+    </wo>
+ </wodefinitions>

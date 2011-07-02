@@ -1,0 +1,37 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = capabilitiesId; 
+            name = capabilitiesId; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = disable; 
+            name = disable; 
+            prototypeName = boolean; 
+        }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {columnName = name; name = name; prototypeName = varchar50; }, 
+        {allowsNull = N; columnName = type; name = type; prototypeName = charFlag; }, 
+        {allowsNull = Y; columnName = uuid; name = uuid; prototypeName = varchar50; }
+    ); 
+    attributesUsedForLocking = (capabilitiesId, disable, id, name, type, uuid); 
+    className = "er.sync.eo.ERSyncClient"; 
+    classProperties = (capabilities, disable, name, type, uuid); 
+    externalName = ERSyncClient; 
+    fetchSpecificationDictionary = {}; 
+    isAbstractEntity = Y; 
+    name = ERSyncClient; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = ERSyncCapabilities; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = capabilitiesId; }); 
+            name = capabilities; 
+        }
+    ); 
+}

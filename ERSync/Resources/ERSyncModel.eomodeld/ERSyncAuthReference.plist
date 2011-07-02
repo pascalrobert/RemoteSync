@@ -1,0 +1,49 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = dataSourceToken; 
+            name = dataSourceToken; 
+            prototypeName = varchar50; 
+        }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {columnName = name; name = name; prototypeName = varchar50; }, 
+        {allowsNull = Y; columnName = uuid; name = uuid; prototypeName = varchar50; }
+    ); 
+    attributesUsedForLocking = (dataSourceToken, id, name, uuid); 
+    className = "er.sync.eo.ERSyncAuthReference"; 
+    classProperties = (changesets, dataSourceToken, entityRecords, name, principals, uuid); 
+    externalName = ERSyncAuthReference; 
+    fetchSpecificationDictionary = {}; 
+    name = ERSyncAuthReference; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = ERSyncChangeset; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = authID; sourceAttribute = id; }); 
+            name = changesets; 
+        }, 
+        {
+            definition = "eRSyncMMEntityAuthReferences.eRSyncEntity"; 
+            name = entityRecords; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = ERSyncMMEntityAuthReference; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = eRSyncAuthReferenceId; sourceAttribute = id; }); 
+            name = eRSyncMMEntityAuthReferences; 
+            propagatesPrimaryKey = Y; 
+        }, 
+        {
+            destination = ERSyncPrincipal; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = authRefId; sourceAttribute = id; }); 
+            name = principals; 
+        }
+    ); 
+}

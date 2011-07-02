@@ -1,0 +1,108 @@
+/* Cadre CSS Document */* {	margin: 0;}html, body {	height: 100%;}/*** Generic HTML  Elements ***/a {	}a:hover {		text-decoration: none;}h1 {	vertical-align: top;	margin-top: -11px;	text-align: center;		color: rgb(255, 255, 255);	font-size: 16px;	font-weight: bold;	background-color: #2B3E54;	border-top: #000000 1px solid;	border-bottom: #000000 1px solid;	padding-top: 4px;	padding-bottom: 4px;}h2 {	text-align: center;		font-size: 14px;	background-color:rgb (0, 0, 0);	padding-top: 4px;	padding-bottom: 2px;}html {	height: 100%;		text-decoration: none;}/*** End Generic HTML  Elements ***//*** Generic formatting styles ***/.normal {	font-weight: normal;}.bold {	font-weight: bold;}.boldLabel {	color: #507AAA;		text-decoration:none;	font-size: 1em;	font-weight: bold;}.boldLabel a:link {	text-decoration:none;	background-color: #507AAA;}.boldLabel a:visited {	color: rgb(255, 255, 255);	font-weight:bold;	font-size:11px;		text-decoration:none;	border-bottom: 0px dotted #507AAA;	background-color: #507AAA;}.boldLabel a:hover {	color: rgb(255, 255, 255);	font-size:11px;		text-decoration:none;	border-bottom: 0px dotted #FFFFFF;	background-color: #507AAA;}.boldLabel a:active {	color: rgb(255, 255, 255);	font-size:11px;		text-decoration:none;	border-bottom: 0px dotted #507AAA;	background-color: #507AAA;}.boldLabelCenter {	text-align: center;		font-size: 12px;	font-weight: bold;	color:rgb (0, 0, 0);}.boldLabelRight {	text-align: right;		font-size: 12px;	font-weight: bold;	color:rgb (0, 0, 0);}.boldTitleItalic {	text-align: center;		font-size: 14px;	font-style: italic;	color:rgb (0, 0, 0);	background-color: #F0E68C;}.boxBorder {	border-right: #000000 1px solid;	border-left: #000000 1px solid;	border-top: #000000 1px solid;	border-bottom: #000000 1px solid;}.boxBorderRed {	border: #FF0000 1px solid;	padding: 10px;}.browserTextForm {	font-size:.75em;	letter-spacing:.05em;	padding: 5px;	background-color: rgb(255, 255, 255);	width: 200px;	border:1px solid black;}.browserText {		font-size: 12px;	background-color: #DFDFFF;}.browserTextDoubleWide {		font-size: 12px;	background-color: #DFDFFF;	width: 415px;}.centered {	text-align: center;}.dangerLink {		font-size: 14px;	font-weight: bold;	background-color: #FF0000;}a:visited.dangerLink {	background-color: #FF0000;}div.centered {	margin-left: auto;	margin-right: auto;}/*div.centered table {    margin: 0 auto;     text-align: left;}*/div.centeredVertical {	margin-top: 20%;}div.valignMiddle {	vertical-align: middle;}.floatRight {	float: right;}.italic {	font-style: italic;}.left {	text-align: left;}.linkMedium {		font-size: 12px;	font-weight: bold;}.linkSmall {		font-size: 10px;	font-weight: bold;}.right {	text-align: right;}table.centered {	margin-left: auto;	margin-right: auto;}.version {  /* For version info in footer */	font-family: lucida grande, geneva, helvetica, arial, sans-serif;	font-size: 8pt;}/*** End Generic formatting styles ***//* Width settings *//* Border settings */.textString {		font-size: 12px;	color:rgb (0, 0, 0);}.textStringBig {		font-size: 14px;	color:rgb (0, 0, 0);}.textStringBigRight {	text-align: right;		font-size: 14px;}.textStringBigBoldRed {		font-size: 14px;	font-weight: bold;	color: #FF0000;}.textStringBold {		font-size: 12px;	font-weight: bold;	color:rgb (0, 0, 0);}.textStringBlue {		font-size: 12px;	color: #0000FF;}.textStringBlueBig {		font-size: 1.2em;	padding: 2px 0px 0px 3px;	color: #0000FF;}.textStringBlueBold {		font-size: 12px;	font-weight: bold;	color: #0000FF;}.textStringGreen {		font-size: 12px;	color: #228B22;}.textStringRed {		font-size: 12px;	color: #FF0000;}.textStringRedBig {		font-size: 14px;	color: #FF0000;}.textStringRight {	text-align: right;		font-size: 12px;	color:#666666;}.textStringSmall {		font-size: 10px;}.textStringSmallInt {		font-size: 12px;	color:rgb (0, 0, 0);	width: 20px;}.textStringSmallIntRight {	text-align: right;		font-size: 12px;	color:rgb (0, 0, 0);	width: 20px;}.textStringWarning {		font-size: 12px;	color: #FFFF00;	background-color: #FF0000;	padding: 6px;}/* End FOREGROUND text string settings */
+
+#content {
+	width: inherit;
+	height:auto;
+	background-color: rgb(255, 255, 255);
+	margin:  20px 0px 0px 0px;
+	margin-bottom: 0px;
+	margin-left: 80px;
+	margin-right: 80px;
+	padding: 0px 0px 10px 0px;
+}
+
+.Logo {
+	z-index:200;
+	text-align:left;
+	height:auto;
+	width:600px;
+	height:400px;
+}
+
+.logInPadding {
+   /* for div inside of form */
+	height:200;
+	padding-top:200px;
+	padding-right:25px;
+	padding-left:200px;
+	margin-right:75px;
+
+}
+
+.logInSubmit {   /* for div inside of form */
+	padding: 10px 0px 10px 10px;
+	text-align:right;
+	width:200px;
+}
+
+.signUpLink {   /* for div inside of form */
+	padding: 10px 0px 10px 10px;
+	text-align:right;
+	width:200px;
+	color: #507AAA;
+	text-decoration:none;
+	padding:2px;
+	margin-bottom:5px;
+	margin-top:5px;
+	border-bottom: 1px dotted #507AAA;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.logInText {
+	color: #507AAA;
+	text-decoration:none;
+	padding:2px;
+	margin-bottom:5px;
+	margin-top:5px;
+	border-bottom: 1px dotted #507AAA;
+	font-size: 12px;
+	font-weight: bold;
+	width:200px;
+}
+
+.buttonStyle {
+	color:#000;
+	position: inherit;
+	border:1px solid #000;
+	font-size:11px;
+	font-weight:bold;
+	height: auto;
+	background-color:#B2C0D7;
+	cursor:pointer;
+	margin:10px 5px 10px 0px;
+	padding:5px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-stretch: semi-expanded;
+	letter-spacing:.16em;
+}
+
+.NoteList {
+	width: 10%;
+	border-right: #000000 1px solid;
+	padding: 10px 0px 10px 10px;
+	text-align:right;
+	color: #507A00;
+	width:200px;
+	text-decoration:none;
+	padding:2px;
+	margin-bottom:5px;
+	margin-top:5px;
+	border-bottom: 1px dotted #507AAA;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.NoteList a {
+	color: #507AAA;
+}
+
+
+.NoteDetail textarea {
+	
+	font-size: 1em;
+	width: 70%;
+	margin-left:11%;
+	background-color: rgb(255, 255, 255);
+	border:1px solid black;
+}

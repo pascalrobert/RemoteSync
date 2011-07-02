@@ -1,0 +1,59 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = authRefId; 
+            name = authRefId; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = clientAppId; 
+            name = clientAppId; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = deviceUUID; 
+            name = deviceUUID; 
+            prototypeName = varchar50; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = lastSync; 
+            name = lastSync; 
+            prototypeName = dateTime; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = principalUUID; 
+            name = principalUUID; 
+            prototypeName = varchar50; 
+        }
+    ); 
+    attributesUsedForLocking = (authRefId, clientAppId, deviceUUID, lastSync, principalUUID); 
+    className = "er.sync.eo.ERSyncPrincipal"; 
+    classProperties = (application, authReference, deviceUUID, lastSync, principalUUID); 
+    externalName = ERSyncPrincipal; 
+    fetchSpecificationDictionary = {}; 
+    name = ERSyncPrincipal; 
+    primaryKeyAttributes = (authRefId, clientAppId, deviceUUID); 
+    relationships = (
+        {
+            destination = ERSyncClientApp; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = clientAppId; }); 
+            name = application; 
+        }, 
+        {
+            destination = ERSyncAuthReference; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = authRefId; }); 
+            name = authReference; 
+        }
+    ); 
+}

@@ -1,0 +1,33 @@
+{
+    EOModelVersion = "2.1"; 
+    adaptorName = JDBC; 
+    connectionDictionary = {
+        URL = "jdbc:postgresql://localhost/notes?useBundledJdbcInfo=true"; 
+        driver = "org.postgresql.Driver"; 
+        password = ""; 
+        plugin = PostgresqlPlugIn; 
+        username = postgres; 
+    }; 
+    entities = (
+        {className = "net.terminalapp.notes.model.entities.Note"; name = Note; }, 
+        {className = "net.terminalapp.notes.model.entities.User"; name = User; }
+    ); 
+    userInfo = {
+        "_EntityModeler" = {
+            activeDatabaseConfigName = Default; 
+            databaseConfigs = {
+                Default = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {
+                        URL = "jdbc:postgresql://localhost/notes?useBundledJdbcInfo=true"; 
+                        driver = "org.postgresql.Driver"; 
+                        password = ""; 
+                        plugin = PostgresqlPlugIn; 
+                        username = postgres; 
+                    }; 
+                    prototypeEntityName = EOJDBCH2Prototypes; 
+                }; 
+            }; 
+        }; 
+    }; 
+}

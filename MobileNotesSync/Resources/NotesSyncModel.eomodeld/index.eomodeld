@@ -1,0 +1,37 @@
+{
+    EOModelVersion = "2.1"; 
+    adaptorName = JDBC; 
+    connectionDictionary = {
+        URL = "jdbc:FrontBase://localhost/NotesSync/user=sync/upasswd=tester"; 
+        driver = ""; 
+        password = ""; 
+        plugin = ""; 
+        username = ""; 
+    }; 
+    entities = (
+        {
+            className = "net.global_village.notes.model.entities.Category"; 
+            name = Category; 
+        }, 
+        {className = "net.global_village.notes.model.entities.Note"; name = Note; }, 
+        {className = "net.global_village.notes.model.entities.User"; name = User; }
+    ); 
+    userInfo = {
+        "_EntityModeler" = {
+            activeDatabaseConfigName = Default; 
+            databaseConfigs = {
+                Default = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {
+                        URL = "jdbc:FrontBase://localhost/NotesSync/user=sync/upasswd=tester"; 
+                        driver = ""; 
+                        password = ""; 
+                        plugin = ""; 
+                        username = ""; 
+                    }; 
+                    prototypeEntityName = EOJDBCFrontBasePrototypes; 
+                }; 
+            }; 
+        }; 
+    }; 
+}

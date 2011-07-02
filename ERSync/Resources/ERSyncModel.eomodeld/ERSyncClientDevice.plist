@@ -1,0 +1,48 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = capabilitiesId; 
+            name = capabilitiesId; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = disable; 
+            name = disable; 
+            prototypeName = boolean; 
+        }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {columnName = name; name = name; prototypeName = varchar50; }, 
+        {allowsNull = N; columnName = type; name = type; prototypeName = charFlag; }, 
+        {allowsNull = Y; columnName = uuid; name = uuid; prototypeName = varchar50; }
+    ); 
+    attributesUsedForLocking = (capabilitiesId, disable, id, name, type, uuid); 
+    className = "er.sync.eo.ERSyncClientDevice"; 
+    classProperties = (applications, capabilities, disable, name, type, uuid); 
+    externalName = ERSyncClient; 
+    fetchSpecificationDictionary = {}; 
+    name = ERSyncClientDevice; 
+    parent = ERSyncClient; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {definition = "eRSyncMMAppDevices.eRSyncClientApp"; name = applications; }, 
+        {
+            destination = ERSyncCapabilities; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = capabilitiesId; }); 
+            name = capabilities; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = ERSyncMMAppDevices; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = eRSyncClientDeviceId; sourceAttribute = id; }); 
+            name = eRSyncMMAppDevices; 
+            propagatesPrimaryKey = Y; 
+        }
+    ); 
+    restrictingQualifier = "type = 'X'"; 
+}

@@ -1,0 +1,75 @@
+{
+    EOModelVersion = "2.1"; 
+    adaptorName = JDBC; 
+    connectionDictionary = {URL = "jdbc:FrontBase://localhost/ERSync/user=sync/upasswd=tester"; }; 
+    entities = (
+        {className = "er.sync.eo.ERSyncAuthReference"; name = ERSyncAuthReference; }, 
+        {className = "er.sync.eo.ERSyncCapabilities"; name = ERSyncCapabilities; }, 
+        {
+            className = "er.sync.eo.ERSyncChangeBoolean"; 
+            name = ERSyncChangeBoolean; 
+            parent = ERSyncChangeValue; 
+        }, 
+        {
+            className = "er.sync.eo.ERSyncChangeInteger"; 
+            name = ERSyncChangeInteger; 
+            parent = ERSyncChangeValue; 
+        }, 
+        {className = "er.sync.eo.ERSyncChangeset"; name = ERSyncChangeset; }, 
+        {
+            className = "er.sync.eo.ERSyncChangeString"; 
+            name = ERSyncChangeString; 
+            parent = ERSyncChangeValue; 
+        }, 
+        {
+            className = "er.sync.eo.ERSyncChangeTimestamp"; 
+            name = ERSyncChangeTimestamp; 
+            parent = ERSyncChangeValue; 
+        }, 
+        {
+            className = "er.sync.eo.ERSyncChangeToMany"; 
+            name = ERSyncChangeToMany; 
+            parent = ERSyncChangeValue; 
+        }, 
+        {
+            className = "er.sync.eo.ERSyncChangeToOne"; 
+            name = ERSyncChangeToOne; 
+            parent = ERSyncChangeValue; 
+        }, 
+        {className = "er.sync.eo.ERSyncChangeValue"; name = ERSyncChangeValue; }, 
+        {className = "er.sync.eo.ERSyncClient"; name = ERSyncClient; }, 
+        {
+            className = "er.sync.eo.ERSyncClientApp"; 
+            name = ERSyncClientApp; 
+            parent = ERSyncClient; 
+        }, 
+        {
+            className = "er.sync.eo.ERSyncClientDeveloper"; 
+            name = ERSyncClientDeveloper; 
+            parent = ERSyncClient; 
+        }, 
+        {
+            className = "er.sync.eo.ERSyncClientDevice"; 
+            name = ERSyncClientDevice; 
+            parent = ERSyncClient; 
+        }, 
+        {className = "er.sync.eo.ERSyncEntity"; name = ERSyncEntity; }, 
+        {className = EOGenericRecord; name = ERSyncMMAppDevices; }, 
+        {className = EOGenericRecord; name = ERSyncMMChangeToManyEntity; }, 
+        {className = EOGenericRecord; name = ERSyncMMEntityAuthReference; }, 
+        {className = "er.sync.eo.ERSyncPrincipal"; name = ERSyncPrincipal; }
+    ); 
+    internalInfo = {"_deletedEntityNamesInObjectStore" = (ERSyncPrincipal); }; 
+    userInfo = {
+        "_EntityModeler" = {
+            activeDatabaseConfigName = Default; 
+            databaseConfigs = {
+                Default = {
+                    adaptorName = JDBC; 
+                    connectionDictionary = {URL = "jdbc:FrontBase://localhost/ERSync/user=sync/upasswd=tester"; }; 
+                    prototypeEntityName = EOJDBCFrontBasePrototypes; 
+                }; 
+            }; 
+        }; 
+    }; 
+}

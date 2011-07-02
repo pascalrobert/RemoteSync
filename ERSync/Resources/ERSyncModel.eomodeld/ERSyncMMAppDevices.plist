@@ -1,0 +1,40 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = eRSyncClientAppId; 
+            name = eRSyncClientAppId; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = eRSyncClientDeviceId; 
+            name = eRSyncClientDeviceId; 
+            prototypeName = id; 
+        }
+    ); 
+    attributesUsedForLocking = (eRSyncClientAppId, eRSyncClientDeviceId); 
+    className = EOGenericRecord; 
+    externalName = ERSyncMMAppDevices; 
+    fetchSpecificationDictionary = {}; 
+    name = ERSyncMMAppDevices; 
+    primaryKeyAttributes = (eRSyncClientAppId, eRSyncClientDeviceId); 
+    relationships = (
+        {
+            destination = ERSyncClientApp; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = eRSyncClientAppId; }); 
+            name = eRSyncClientApp; 
+        }, 
+        {
+            destination = ERSyncClientDevice; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = eRSyncClientDeviceId; }); 
+            name = eRSyncClientDevice; 
+        }
+    ); 
+}

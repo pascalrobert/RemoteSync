@@ -1,0 +1,50 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = attributeName; 
+            name = attributeName; 
+            prototypeName = varchar50; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = changesetID; 
+            name = changesetID; 
+            prototypeName = id; 
+        }, 
+        {allowsNull = N; columnName = entityID; name = entityID; prototypeName = id; }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {
+            allowsNull = Y; 
+            columnName = valueType; 
+            name = valueType; 
+            prototypeName = charFlag; 
+        }
+    ); 
+    attributesUsedForLocking = (attributeName, changesetID, entityID, id, valueType); 
+    className = "er.sync.eo.ERSyncChangeValue"; 
+    classProperties = (attributeName, changeEntity, changeset, valueType); 
+    externalName = ERSyncChangeValue; 
+    fetchSpecificationDictionary = {}; 
+    isAbstractEntity = Y; 
+    name = ERSyncChangeValue; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = ERSyncEntity; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = entityID; }); 
+            name = changeEntity; 
+        }, 
+        {
+            destination = ERSyncChangeset; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = changesetID; }); 
+            name = changeset; 
+        }
+    ); 
+}

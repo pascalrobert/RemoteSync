@@ -1,0 +1,82 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = dataSourceToken; 
+            name = dataSourceToken; 
+            prototypeName = varchar50; 
+        }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {
+            allowsNull = N; 
+            columnName = status; 
+            name = status; 
+            prototypeName = charFlag; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = updatedDate; 
+            name = updatedDate; 
+            prototypeName = dateTime; 
+        }, 
+        {allowsNull = Y; columnName = uuid; name = uuid; prototypeName = varchar50; }
+    ); 
+    attributesUsedForLocking = (dataSourceToken, id, status, updatedDate, uuid); 
+    className = "er.sync.eo.ERSyncEntity"; 
+    classProperties = (
+        authReferences, 
+        changeValues, 
+        dataSourceToken, 
+        status, 
+        toManyChanges, 
+        toOneRelations, 
+        updatedDate, 
+        uuid
+    ); 
+    externalName = ERSyncEntity; 
+    fetchSpecificationDictionary = {}; 
+    name = ERSyncEntity; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            definition = "eRSyncMMEntityAuthReferences.eRSyncAuthReference"; 
+            name = authReferences; 
+        }, 
+        {
+            destination = ERSyncChangeValue; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = entityID; sourceAttribute = id; }); 
+            name = changeValues; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = ERSyncMMChangeToManyEntity; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = eRSyncEntityId; sourceAttribute = id; }); 
+            name = eRSyncMMChangeToManyEntities; 
+            propagatesPrimaryKey = Y; 
+        }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = ERSyncMMEntityAuthReference; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = eRSyncEntityId; sourceAttribute = id; }); 
+            name = eRSyncMMEntityAuthReferences; 
+            propagatesPrimaryKey = Y; 
+        }, 
+        {
+            definition = "eRSyncMMChangeToManyEntities.eRSyncChangeToMany"; 
+            name = toManyChanges; 
+        }, 
+        {
+            destination = ERSyncChangeToOne; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = toOneEntityID; sourceAttribute = id; }); 
+            name = toOneRelations; 
+        }
+    ); 
+}

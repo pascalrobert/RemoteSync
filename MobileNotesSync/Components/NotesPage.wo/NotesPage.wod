@@ -1,0 +1,82 @@
+wrapper : PageWrapper {
+}
+
+noteRep : WORepetition 
+{
+  list = noteArray;
+  item = noteItem;
+}
+
+addNoteLink : WOHyperlink 
+{
+disabled = editMode;
+action = addNoteAction;
+}
+
+noteLink : WOHyperlink 
+{
+disabled = editMode;
+action = selectNoteAction;
+}
+
+noteContentPreview : WOString 
+{
+  value = noteItem.subject;
+}
+
+editNoteForm : WOForm 
+{
+	id = "noteForm";
+	action = doSave;
+	name = "noteForm";
+}
+
+noteContent : WOText 
+{
+  value = selectedNote.content;
+  rows= 7;
+  cols = 40;
+}
+
+saveButton: WOSubmitButton	
+{
+	id = "loginButton";
+	action = doSave;
+	value = "Save";
+	class = "buttonStyle";
+}
+
+isEditing : WOConditional {
+  condition = editMode;
+}
+
+deleteButton : WOSubmitButton 
+{
+	id = "deleteButton";
+	action = doDelete;
+	value = "Delete";
+	class = "buttonStyle";
+}
+
+noteSubject : WOTextField 
+{
+  value = selectedNote.subject;
+  maxlength = 50;
+  size = 50;
+}
+
+noteCategory : WOPopUpButton
+{
+  list = categoryArray;
+  item = categoryItem;
+  value = categoryItem.name;
+  selection = selectedNote.category;
+}
+
+cancelButton : WOSubmitButton 
+{
+	id = "cancelButton";
+	action = doCancel;
+	value = "Cancel";
+	class = "buttonStyle";
+}

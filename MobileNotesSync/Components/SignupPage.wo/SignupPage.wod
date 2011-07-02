@@ -1,0 +1,43 @@
+wrapper : PageWrapper {
+}
+
+LoginForm: WOForm {
+	id = "loginForm";
+	action = doSignup;
+	name = "loginForm";
+}
+
+UserNameField: WOTextField {
+	value = userName;
+	id    = "userName";
+	name  = "userName";
+	class = "logInTextField";
+}
+
+PasswordField: WOPasswordField {
+	value = password;
+	id    = "password";
+	name  = "password";
+	class = "logInTextField";
+}
+PasswordCheckField: WOPasswordField {
+	value = passwordCheck;
+	id    = "passwordCheck";
+	name  = "passwordCheck";
+	class = "logInTextField";
+}
+
+LoginButton: WOSubmitButton	{
+	id               = "loginButton";
+	action = doSignup;
+	value = "Login";
+}
+
+HasErrorMessage: WOConditional {
+	condition = errorMessage;
+}
+
+ErrorMessage: WOString {
+	value = errorMessage;
+	escapeHTML = false;
+}

@@ -1,0 +1,49 @@
+{
+    attributes = (
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {
+            allowsNull = N; 
+            columnName = password; 
+            name = password; 
+            prototypeName = varchar100; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = username; 
+            name = username; 
+            prototypeName = varchar100; 
+        }
+    ); 
+    attributesUsedForLocking = (id); 
+    className = "net.global_village.notes.model.entities.User"; 
+    classProperties = (categories, notes, password, username); 
+    entityIndexes = (
+        {
+            attributes = (username); 
+            constraint = distinct; 
+            indexType = clustered; 
+            name = "username_idx"; 
+            order = asc; 
+        }
+    ); 
+    externalName = "N_User"; 
+    fetchSpecificationDictionary = {}; 
+    name = User; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = Category; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = id; }); 
+            name = categories; 
+        }, 
+        {
+            destination = Note; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = userID; sourceAttribute = id; }); 
+            name = notes; 
+        }
+    ); 
+}

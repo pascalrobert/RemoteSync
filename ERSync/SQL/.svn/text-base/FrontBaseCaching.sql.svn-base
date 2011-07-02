@@ -1,0 +1,326 @@
+set transaction isolation level serializable, locking pessimistic, read write; 
+
+--
+-- DAPLEntry 
+--
+ALTER TABLE DAPLEntry SET CACHE(0, 10000, 100); 
+ALTER TABLE DAPLEntry SET PRESERVE TRUE; 
+ALTER TABLE DAPLEntry SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_DAPLEntry_oidOrderDisplayAd_OrderDisplayAd_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_DAPLEntry_oidPriorityList_DAPL_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_DAPLEntry_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+--
+-- DownloadLog
+--
+ALTER TABLE DownloadLog SET CACHE(0, 1000, 100); 
+ALTER TABLE DownloadLog SET PRESERVE TRUE; 
+ALTER TABLE DownloadLog SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_DownloadLog_oidManager_DownloadManager_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_DownloadLog_oidUser_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_DownloadLog_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+--
+-- DownloadManager
+--
+ALTER TABLE DownloadManager SET CACHE(0, 1000, 100); 
+ALTER TABLE DownloadManager SET PRESERVE TRUE; 
+ALTER TABLE DownloadManager SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_DownloadManager_oid_Region_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_DownloadManager_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- HHUser
+--
+ALTER TABLE HHUser SET CACHE(0, 100, 100); 
+ALTER TABLE HHUser SET PRESERVE TRUE; 
+ALTER TABLE HHUser SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IPRIMARY_KEY_HHUser_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+--
+-- Message
+--
+ALTER TABLE Message SET CACHE(0, 10000, 100); 
+ALTER TABLE Message SET PRESERVE TRUE; 
+ALTER TABLE Message SET INDEX PRESERVE TIME; 
+ALTER INDEX "Message_state" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_Message_oidDisplayAd_OrderDisplayAd_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_Message_oidFromUser_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_Message_oidToUser_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_Message_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- OrderDisplayAd
+--
+ALTER TABLE OrderDisplayAd SET CACHE(0, 150000, 100); 
+ALTER TABLE OrderDisplayAd SET PRESERVE TRUE; 
+ALTER TABLE OrderDisplayAd SET INDEX PRESERVE TIME; 
+ALTER INDEX "OrderDisplayAd_activity" SET CACHE(0, 50000, 100);
+ALTER INDEX "OrderDisplayAd_areAllCyclesComplete" SET CACHE(0, 50000, 100);
+ALTER INDEX "OrderDisplayAd_masterAdKey" SET CACHE(0, 50000, 100);
+ALTER INDEX "OrderDisplayAd_pubDate" SET CACHE(0, 50000, 100);
+ALTER INDEX "OrderDisplayAd_state" SET CACHE(0, 50000, 100);
+ALTER INDEX "OrderDisplayAd_weektag" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDisplayAd_oidColorSwatch_ColorSwatch_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDisplayAd_oidCurrentStateUser_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDisplayAd_oidLastComposer_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDisplayAd_oidLastProofer_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDisplayAd_oidOrder_PPOrder_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_OrderDisplayAd_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IuniqueAdKey" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+--
+-- OrderDisplayAdAuditRecord
+--
+ALTER TABLE OrderDisplayAdAuditRecord SET INDEX PRESERVE TIME; 
+ALTER INDEX "OrderDisplayAdAuditRecord_oidOrderDisplayAd" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDisplayAdAuditRecord_oidOrderDisplayAd_OrderDisplayAd_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDisplayAdAuditRecord_oidUser_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_OrderDisplayAdAuditRecord_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+--
+-- OrderDistribution
+--
+ALTER TABLE OrderDistribution SET CACHE(0, 18000, 100); 
+ALTER TABLE OrderDistribution SET PRESERVE TRUE; 
+ALTER TABLE OrderDistribution SET INDEX PRESERVE TIME; 
+ALTER INDEX "OrderDistribution_detailAdKey" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDistribution_oidOrderPublication_OrderPublication_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDistribution_oidSection_PPSection_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_OrderDistribution_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- OrderDistributionZoneX
+--
+ALTER TABLE OrderDistributionZoneX SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_OrderDistributionZoneX_oidOrderDistribution_OrderDistribution_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderDistributionZoneX_oidZone_PPZone_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_OrderDistributionZoneX_oidOrderDistribution_oidZone" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- OrderPress
+--
+ALTER TABLE OrderPress SET CACHE(0, 18000, 100); 
+ALTER TABLE OrderPress SET PRESERVE TRUE; 
+ALTER TABLE OrderPress SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IPRIMARY_KEY_OrderPress_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+--
+-- OrderPublication
+--
+ALTER TABLE OrderPublication SET CACHE(0, 18000, 100); 
+ALTER TABLE OrderPublication SET PRESERVE TRUE; 
+ALTER TABLE OrderPublication SET INDEX PRESERVE TIME; 
+ALTER INDEX "OrderPublication_DA_isCycleComplete" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderPublication_oidOrderDisplayAd_OrderDisplayAd_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_OrderPublication_oidPublication_Publication_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_OrderPublication_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- PPComment
+--
+ALTER TABLE PPComment SET CACHE(0, 7500, 100); 
+ALTER TABLE PPComment SET PRESERVE TRUE; 
+ALTER TABLE PPComment SET INDEX PRESERVE TIME; 
+ALTER INDEX "PPComment_oidEntity_type" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_PPComment_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- PPOrder
+--
+ALTER TABLE PPOrder SET CACHE(0, 150000, 100); 
+ALTER TABLE PPOrder SET PRESERVE TRUE; 
+ALTER TABLE PPOrder SET INDEX PRESERVE TIME; 
+ALTER INDEX "Order_accountNumber" SET CACHE(0, 50000, 100);
+ALTER INDEX "Order_adName" SET CACHE(0, 50000, 100);
+ALTER INDEX "Order_orderNum" SET CACHE(0, 50000, 100);
+ALTER INDEX "Order_runKind" SET CACHE(0, 50000, 100);
+ALTER INDEX "Order_territory" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPOrder_oidDeptartment_Department_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPOrder_oidDisplayAdType_DisplayAdType_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPOrder_oidHomeDept_Department_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPOrder_oidOrderPress_OrderPress_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPOrder_oidProduct_Product_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPOrder_oidSalesOffice_Office_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPOrder_oidSalesRep_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_PPOrder_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- PPUser
+--
+ALTER TABLE PPUser SET CACHE(0, 2000, 100); 
+ALTER TABLE PPUser SET PRESERVE TRUE; 
+ALTER TABLE PPUser SET INDEX PRESERVE TIME; 
+ALTER INDEX "PPUser_firstName" SET CACHE(0, 50000, 100);
+ALTER INDEX "PPUser_lastName" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPUser_oidDept_Department_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPUser_oidManager_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPUser_oidOffice_Office_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PPUser_oidRegion_Region_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IuniqueEmployeeNum" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IuniqueLoginName" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- PlateWaste
+--
+ALTER TABLE PlateWaste SET CACHE(0, 1500, 100); 
+ALTER TABLE PlateWaste SET PRESERVE TRUE; 
+ALTER TABLE PlateWaste SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_PlateWaste_oidDisplayAd_OrderDisplayAd_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_PlateWaste_oidUser_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_PlateWaste_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+--
+-- PublicationCycle
+--
+ALTER TABLE PublicationCycle SET CACHE(0, 1000, 100); 
+ALTER TABLE PublicationCycle SET PRESERVE TRUE; 
+ALTER TABLE PublicationCycle SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_PublicationCycle_oidPublication_Publication_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_PublicationCycle_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IuniqueCurrentCycle" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IuniquePubCyclePubDate" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IuniqueWeekTag" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- Replate
+--
+ALTER TABLE Replate SET CACHE(0, 1500, 100); 
+ALTER TABLE Replate SET PRESERVE TRUE; 
+ALTER TABLE Replate SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_Replate_oidDisplayAd_OrderDisplayAd_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_Replate_oidUser_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_Replate_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- SystemAlert
+--
+ALTER TABLE SystemAlert SET CACHE(0, 100, 100); 
+ALTER TABLE SystemAlert SET PRESERVE TRUE; 
+ALTER TABLE SystemAlert SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IPRIMARY_KEY_SystemAlert_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IuniqueSourceMessage" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+--
+-- UserAsset
+--
+ALTER TABLE UserAsset SET CACHE(0, 15000, 100); 
+ALTER TABLE UserAsset SET PRESERVE TRUE; 
+ALTER TABLE UserAsset SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_UserAsset_oidDisplayAd_OrderDisplayAd_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IFOREIGN_KEY_UserAsset_oidUser_PPUser_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_UserAsset_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IuniqueEditableState" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- UserGroup
+--
+ALTER TABLE UserGroup SET CACHE(0, 100, 100); 
+ALTER TABLE UserGroup SET PRESERVE TRUE; 
+ALTER TABLE UserGroup SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IPRIMARY_KEY_UserGroup_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- UserGroupUserX
+--
+ALTER TABLE UserGroupUserX SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_UserGroupUserX_oidUserGroup_UserGroup_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_UserGroupUserX_oidUser_oidUserGroup" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- UserPrivilege
+--
+ALTER TABLE UserPrivilege SET CACHE(0, 100, 100); 
+ALTER TABLE UserPrivilege SET PRESERVE TRUE; 
+ALTER TABLE UserPrivilege SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IPRIMARY_KEY_UserPrivilege_oid" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- UserRole
+--
+ALTER TABLE UserRole SET CACHE(0, 100, 100); 
+ALTER TABLE UserRole SET PRESERVE TRUE; 
+ALTER TABLE UserRole SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IPRIMARY_KEY_UserRole_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "INDEX_UserRole__entityType" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- UserRolePrivilegeX
+--
+ALTER TABLE UserRolePrivilegeX SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IFOREIGN_KEY_UserRolePrivilegeX_oidUserPrivilege_UserPrivilege_oid" SET CACHE(0, 50000, 100);
+ALTER INDEX "_IPRIMARY_KEY_UserRolePrivilegeX_oidUserPrivilege_oidUserRole" SET CACHE(0, 50000, 100);
+ALTER INDEX "INDEX_UserRolePrivilegeX__oidUserRole" SET CACHE(0, 50000, 100);
+COMMIT;
+
+
+
+--
+-- UserRoleUserX
+--
+ALTER TABLE UserRoleUserX SET INDEX PRESERVE TIME; 
+ALTER INDEX "_IPRIMARY_KEY_UserRoleUserX_oidUser_oidUserRole" SET CACHE(0, 50000, 100);
+ALTER INDEX "INDEX_UserRoleUserX__oidUserRole" SET CACHE(0, 50000, 100);
+COMMIT;

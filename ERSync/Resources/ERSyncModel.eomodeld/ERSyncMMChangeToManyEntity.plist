@@ -1,0 +1,40 @@
+{
+    attributes = (
+        {
+            allowsNull = N; 
+            columnName = eRSyncChangeToManyId; 
+            name = eRSyncChangeToManyId; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = eRSyncEntityId; 
+            name = eRSyncEntityId; 
+            prototypeName = id; 
+        }
+    ); 
+    attributesUsedForLocking = (eRSyncChangeToManyId, eRSyncEntityId); 
+    className = EOGenericRecord; 
+    externalName = ERSyncMMChangeToManyEntity; 
+    fetchSpecificationDictionary = {}; 
+    name = ERSyncMMChangeToManyEntity; 
+    primaryKeyAttributes = (eRSyncChangeToManyId, eRSyncEntityId); 
+    relationships = (
+        {
+            destination = ERSyncChangeToMany; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = eRSyncChangeToManyId; }); 
+            name = eRSyncChangeToMany; 
+        }, 
+        {
+            destination = ERSyncEntity; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = eRSyncEntityId; }); 
+            name = eRSyncEntity; 
+        }
+    ); 
+}

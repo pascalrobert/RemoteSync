@@ -1,0 +1,8 @@
+PageContent: WOComponentContent {
+    _unroll = YES;
+}
+
+titleString : WOString 
+{
+  value = application.name;
+}

@@ -1,0 +1,54 @@
+{
+    attributes = (
+        {
+            allowsNull = Y; 
+            columnName = categoryID; 
+            name = categoryID; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = Y; 
+            columnName = content; 
+            name = content; 
+            prototypeName = varcharLarge; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = creationDate; 
+            name = creationDate; 
+            prototypeName = dateTime; 
+        }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {
+            allowsNull = Y; 
+            columnName = subject; 
+            name = subject; 
+            prototypeName = varchar50; 
+        }, 
+        {allowsNull = N; columnName = userID; name = userID; prototypeName = id; }
+    ); 
+    attributesUsedForLocking = (categoryID, id, subject, userID); 
+    className = "net.global_village.notes.model.entities.Note"; 
+    classProperties = (category, content, creationDate, subject, user); 
+    externalName = Note; 
+    fetchSpecificationDictionary = {}; 
+    name = Note; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = Category; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = categoryID; }); 
+            name = category; 
+        }, 
+        {
+            destination = User; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = userID; }); 
+            name = user; 
+        }
+    ); 
+}

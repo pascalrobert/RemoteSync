@@ -1,0 +1,37 @@
+{
+    attributes = (
+        {allowsNull = Y; columnName = authID; name = authID; prototypeName = id; }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {
+            allowsNull = Y; 
+            columnName = updatedDate; 
+            name = updatedDate; 
+            prototypeName = dateTime; 
+        }, 
+        {allowsNull = Y; columnName = uuid; name = uuid; prototypeName = varchar50; }
+    ); 
+    attributesUsedForLocking = (authID, id, updatedDate, uuid); 
+    className = "er.sync.eo.ERSyncChangeset"; 
+    classProperties = (authReference, changeValues, updatedDate, uuid); 
+    externalName = ERSyncChangeset; 
+    fetchSpecificationDictionary = {}; 
+    internalInfo = {"_javaClientClassName" = ERSyncChangeset; }; 
+    name = ERSyncChangeset; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = ERSyncAuthReference; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = authID; }); 
+            name = authReference; 
+        }, 
+        {
+            destination = ERSyncChangeValue; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = changesetID; sourceAttribute = id; }); 
+            name = changeValues; 
+        }
+    ); 
+}

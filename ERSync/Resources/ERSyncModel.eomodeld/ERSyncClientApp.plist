@@ -1,0 +1,80 @@
+{
+    attributes = (
+        {columnName = apiKey; name = apiKey; prototypeName = varchar50; }, 
+        {
+            allowsNull = Y; 
+            columnName = capabilitiesId; 
+            name = capabilitiesId; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = developerID; 
+            name = developerID; 
+            prototypeName = id; 
+        }, 
+        {
+            allowsNull = N; 
+            columnName = disable; 
+            name = disable; 
+            prototypeName = boolean; 
+        }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {columnName = name; name = name; prototypeName = varchar50; }, 
+        {allowsNull = N; columnName = type; name = type; prototypeName = charFlag; }, 
+        {allowsNull = Y; columnName = uuid; name = uuid; prototypeName = varchar50; }
+    ); 
+    attributesUsedForLocking = (apiKey, capabilitiesId, developerID, disable, id, name, type, uuid); 
+    className = "er.sync.eo.ERSyncClientApp"; 
+    classProperties = (
+        apiKey, 
+        capabilities, 
+        developer, 
+        devices, 
+        disable, 
+        name, 
+        principals, 
+        type, 
+        uuid
+    ); 
+    externalName = ERSyncClient; 
+    fetchSpecificationDictionary = {}; 
+    name = ERSyncClientApp; 
+    parent = ERSyncClient; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = ERSyncCapabilities; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = capabilitiesId; }); 
+            name = capabilities; 
+        }, 
+        {
+            destination = ERSyncClientDeveloper; 
+            isMandatory = Y; 
+            isToMany = N; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = id; sourceAttribute = developerID; }); 
+            name = developer; 
+        }, 
+        {definition = "eRSyncMMAppDevices.eRSyncClientDevice"; name = devices; }, 
+        {
+            deleteRule = EODeleteRuleCascade; 
+            destination = ERSyncMMAppDevices; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = eRSyncClientAppId; sourceAttribute = id; }); 
+            name = eRSyncMMAppDevices; 
+            propagatesPrimaryKey = Y; 
+        }, 
+        {
+            destination = ERSyncPrincipal; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = clientAppId; sourceAttribute = id; }); 
+            name = principals; 
+        }
+    ); 
+    restrictingQualifier = "type = 'A'"; 
+}

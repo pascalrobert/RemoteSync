@@ -1,0 +1,29 @@
+{
+    attributes = (
+        {allowsNull = N; name = id; prototypeName = id; }, 
+        {
+            columnName = "large_objects"; 
+            name = "large_objects"; 
+            prototypeName = boolean; 
+        }, 
+        {columnName = manufacturer; name = manufacturer; prototypeName = varchar100; }, 
+        {columnName = model; name = model; prototypeName = varchar100; }
+    ); 
+    attributesUsedForLocking = (id, "large_objects", manufacturer, model); 
+    className = "er.sync.eo.ERSyncCapabilities"; 
+    classProperties = ("large_objects", manufacturer, model, syncClients); 
+    externalName = ERSyncCapabilities; 
+    fetchSpecificationDictionary = {}; 
+    internalInfo = {"_javaClientClassName" = ERSyncCapabilities; }; 
+    name = ERSyncCapabilities; 
+    primaryKeyAttributes = (id); 
+    relationships = (
+        {
+            destination = ERSyncClient; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = capabilitiesId; sourceAttribute = id; }); 
+            name = syncClients; 
+        }
+    ); 
+}
