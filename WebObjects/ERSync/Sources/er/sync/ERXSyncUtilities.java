@@ -1,3 +1,14 @@
+/*
+ * ERXSyncUtilities.java
+ *
+ * This class is public domain software - that is, you can do whatever you want
+ * with it, and include it software that is licensed under the BSD license
+ *
+ * If you make modifications to this code that you think would benefit the
+ * wider community, please send me a copy and I'll post it on my site.
+ *
+ */
+
 package er.sync;
 
 import java.math.BigDecimal;
@@ -22,6 +33,10 @@ import com.webobjects.foundation.NSMutableArray;
 import com.webobjects.foundation.NSMutableDictionary;
 import com.webobjects.foundation.NSSelector;
 
+/**
+ * Global Village Consulting
+ * @author	David Aspinall
+ */
 public class ERXSyncUtilities
 {
 	public static final String UI_HASH_SEPARATOR = "-";

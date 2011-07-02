@@ -1,12 +1,21 @@
+/*
+ * Arguments.java
+ *
+ * This class is public domain software - that is, you can do whatever you want
+ * with it, and include it software that is licensed under the BSD license
+ *
+ * If you make modifications to this code that you think would benefit the
+ * wider community, please send me a copy and I'll post it on my site.
+ *
+ */
+
 package net.global_village;
 
 import java.util.*;
 
 /**
- *
- * @author	DavidA
- * @version $Id: Arguments.java,v 1.1 2005/11/30 14:20:01 davida Exp $
- * @since	Fri 26-Oct-2001 
+ * Global Village Consulting
+ * @author	David Aspinall
  */
 public class Arguments extends Object
 {
