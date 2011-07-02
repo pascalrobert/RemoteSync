@@ -1,8 +1,11 @@
-.DS_Store
-
 *~
 *.class
-
+target
+*.xcodeproj
+*.pbxproj
 bin
 build
 dist
+target
+.DS_Store
+
