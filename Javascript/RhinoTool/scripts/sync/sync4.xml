@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sync>
+	<principalUUID>#PUID#</principalUUID>
+    <lastSync>#lastSync#</lastSync>
+    <data>
+    	<Note status="insert" id="EA3E9977-8B58-40FE-85CF-4E4027723DF8">
+    		<content>Slow sync insert and category 'Home'.</content>
+		    <creationDate>2011-06-26T22:54:39Z</creationDate>
+			<subject>Slow 1</subject>
+			<category>
+				<Category id="Category:1000000"/>
+			</category>
+    	</Note>
+    	<Note status="insert" id="E0743202-C870-4531-98A2-D142CA6A3E27">
+    		<content>Slow sync insert and category 'Home'.</content>
+		    <creationDate>2011-06-26T22:54:39Z</creationDate>
+			<subject>Slow 2</subject>
+			<category>
+				<Category id="Category:1000000"/>
+			</category>
+    	</Note>
+    	<Note status="insert" id="0230C588-9C4A-420D-A829-6E0DF2378CF9">
+    		<content>Slow sync insert and category 'Home'.</content>
+		    <creationDate>2011-06-26T22:54:39Z</creationDate>
+			<subject>Slow 3</subject>
+			<category>
+				<Category id="Category:1000000"/>
+			</category>
+    	</Note>
+    	<Note status="insert" id="1A4FFE35-258C-4094-BA9F-92374A290E35">
+    		<content>Created note content with creationDate 2011-06-26T22:54:39Z and category 'Mobile'.</content>
+		    <creationDate>2011-06-26T22:54:39Z</creationDate>
+			<subject>Slow 4</subject>
+			<category>
+				<Category id="Category:1000003"/>
+			</category>
+    	</Note>
+    	<Note status="update" id="Note:1000003">
+    		<content>Created note content with creationDate 2011-06-26T22:54:39Z, and now updated by client set category to 'Work'</content>
+		    <creationDate>2011-06-26T22:54:39Z</creationDate>
+			<category>
+				<Category id="Category:1000001"/>
+			</category>
+    	</Note>
+    	<Note status="update" id="Note:1000003">
+    		<content>Changed note content but not creationDate.</content>
+    	</Note>
+    	<Note status="delete" id="Note:1000001" />
+    </data>
+</sync>

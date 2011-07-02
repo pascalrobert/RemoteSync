@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sync>
+	<principalUUID>#PUID#</principalUUID>
+    <lastSync>#lastSync#</lastSync>
+    <data>
+    	<Note status="insert" id="38470D60-35F4-41FE-8ECA-9AE490F7D527">
+    		<content>Fast sync insert and category 'Home'.</content>
+		    <creationDate>2011-06-26T22:54:39Z</creationDate>
+			<subject>Fast 1</subject>
+			<category>
+				<Category id="Category:1000000"/>
+			</category>
+    	</Note>
+    </data>
+</sync>
