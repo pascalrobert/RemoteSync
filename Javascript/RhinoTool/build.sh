@@ -1,5 +1,5 @@
 
-BUILDS=builds
+BUILDS=dist
 LIBS=.
 for jar in lib/*
 do

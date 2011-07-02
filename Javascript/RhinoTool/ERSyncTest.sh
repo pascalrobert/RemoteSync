@@ -1,5 +1,5 @@
 
-LIBS=builds/RhinoTool.jar
+LIBS=dist/RhinoTool.jar
 for jar in lib/*
 do
 	LIBS=${LIBS}:${jar}

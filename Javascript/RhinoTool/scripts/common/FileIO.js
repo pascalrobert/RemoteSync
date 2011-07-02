@@ -30,7 +30,8 @@ function ReadFile( /* string path */ dir, /* string */ filename)
     var string  = "";
     while( ( line = reader.readLine() ) != null ) 
 	{
-        string += line ;
+        string += line;
+		string += "\n";
     }
     return string;
 }

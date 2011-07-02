@@ -24,9 +24,9 @@ public class RhinoTool
 		arguments.parse(args);
 
 		boolean verbose = false;
-		Boolean[] verboseArgs = (Boolean[])arguments.optionForKey( "-verbose" );
+		Object[] verboseArgs = arguments.optionForKey( "-verbose" );
 		if (verboseArgs != null && verboseArgs.length == 1 )
-			verbose = verboseArgs[0].booleanValue();
+			verbose = ((Boolean)verboseArgs[0]).booleanValue();
 
 		File[] library = null;
 		Object[] libargs = arguments.optionForKey( "-library" );
@@ -111,7 +111,9 @@ public class RhinoTool
 		}
 		
 		if ( verboseTool == true ) System.out.println( "" );
+		
 		System.out.println( "Running main script [" + script + "]\n" );
+
         readScript( engine, script );
     }
 	

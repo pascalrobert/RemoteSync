@@ -1,18 +1,3 @@
-
-// http://192.168.0.100:2010/cgi-bin/WebObjects/MobileNotesSync.woa
-var SVC = {
-    protocol: "http",
-    port: 2010,
-    host: "localhost",
-	uri: "/cgi-bin/WebObjects/MobileNotesSync.woa/sync/register/new",
-	junk: "register/check"
-};
-
-var AUTH = {
-    user: "",
-    pword: ""
-};
-
 importPackage(
 	org.apache.http.impl.client,
 	org.apache.http.client.methods,
@@ -29,38 +14,42 @@ importPackage(
     java.io
 );
 
+var properties = LoadProperties( "scripts/sync", "ersync.properties" );
+var protocol = properties.getProperty("protocol");
+var host = properties.getProperty("host");
+var port = properties.getProperty("port");
+var uri = properties.getProperty("uri");
+var user = properties.getProperty("username");
+var pword = properties.getProperty("password");
+var device = properties.getProperty("deviceUUID");
+var verbose = (properties.getProperty("verbose") == 'true');;
+
+var source = ReadFile( "scripts/sync/", "sync0.xml" );
+source = source.replace( "#USER#", user );
+source = source.replace( "#PASSWORD#", pword );
+source = source.replace( "#DEVICEUUID#", device );
+
+if ( verbose ) println( source );
 
 var httpclient = new DefaultHttpClient();
-var url = URIUtils.createURI( SVC.protocol, SVC.host, SVC.port, SVC.uri, null, null);
+var url = URIUtils.createURI( protocol, host, port, uri + "/sync/register/new", null, null);
 var authpost = new HttpPost(url);
-
-// authpost.addHeader("Content-type", "text/xml; charset=ISO-8859-1");
-
-var input = new File("scripts/sync/sync0.xml");
-
-authpost.setEntity(new org.apache.http.entity.FileEntity(input, "text/xml; charset=UTF-8") );
+authpost.setEntity(new org.apache.http.entity.StringEntity(source, "text/xml", "UTF-8") );
 
 response = httpclient.execute(authpost);
+var str = EntityUtils.toString(response.getEntity());
+if ( verbose ) println( str );
 
-entity = response.getEntity();
+var doc = ParseXMLString(str);
 
-var str = EntityUtils.toString(entity);
-println(str);
-
-  var doc = ParseXMLString(str);
-
-  //doc.getDocumentElement().normalize();
-  println("Root element " + doc.getDocumentElement().getNodeName());
-  var nodeLst = doc.getElementsByTagName("principalUUID");
-
-  if ( nodeLst.getLength() == 1 )
-  {
+var nodeLst = doc.getElementsByTagName("principalUUID");
+if ( nodeLst.getLength() == 1 )
+{
 	var principalNode = nodeLst.item(0);
 	var children = principalNode.getChildNodes();
 
-	var prop = new Properties();
-	prop.setProperty( "principalUUID", children.item(0).getNodeValue() );
+	properties.setProperty( "principalUUID", children.item(0).getNodeValue() );
 
-	StoreProperties(prop, "scripts/sync", "ersync.properties" );
-  }
+	StoreProperties(properties, "scripts/sync", "ersync.properties" );
+}
 

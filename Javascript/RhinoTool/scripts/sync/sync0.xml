@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <registration>
 	<appid>0c424873-2f0d-4746-b2d5-1735f51d9f52</appid>
-	<device>CF8468D6-B074-4C9C-AB1A-D11CB08A910F</device>
-	<user>david</user>
-	<password>tester</password>
+	<device>#DEVICEUUID#</device>
+	<user>#USER#</user>
+	<password>#PASSWORD#</password>
 </registration>
