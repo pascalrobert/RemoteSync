@@ -200,32 +200,11 @@ public abstract class _ERSyncAuthReference extends  EOGenericRecord {
   }
 
   public NSArray<er.sync.eo.ERSyncPrincipal> principals(EOQualifier qualifier) {
-    return principals(qualifier, null, false);
+    return principals(qualifier, null);
   }
 
-  public NSArray<er.sync.eo.ERSyncPrincipal> principals(EOQualifier qualifier, boolean fetch) {
-    return principals(qualifier, null, fetch);
-  }
-
-  public NSArray<er.sync.eo.ERSyncPrincipal> principals(EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings, boolean fetch) {
+  public NSArray<er.sync.eo.ERSyncPrincipal> principals(EOQualifier qualifier, NSArray<EOSortOrdering> sortOrderings) {
     NSArray<er.sync.eo.ERSyncPrincipal> results;
-    if (fetch) {
-      EOQualifier fullQualifier;
-      EOQualifier inverseQualifier = new EOKeyValueQualifier(er.sync.eo.ERSyncPrincipal.AUTH_REFERENCE_KEY, EOQualifier.QualifierOperatorEqual, this);
-    	
-      if (qualifier == null) {
-        fullQualifier = inverseQualifier;
-      }
-      else {
-        NSMutableArray qualifiers = new NSMutableArray();
-        qualifiers.addObject(qualifier);
-        qualifiers.addObject(inverseQualifier);
-        fullQualifier = new EOAndQualifier(qualifiers);
-      }
-
-      results = er.sync.eo.ERSyncPrincipal.fetchERSyncPrincipals(editingContext(), fullQualifier, sortOrderings);
-    }
-    else {
       results = principals();
       if (qualifier != null) {
         results = (NSArray<er.sync.eo.ERSyncPrincipal>)EOQualifier.filteredArrayWithQualifier(results, qualifier);
@@ -233,7 +212,6 @@ public abstract class _ERSyncAuthReference extends  EOGenericRecord {
       if (sortOrderings != null) {
         results = (NSArray<er.sync.eo.ERSyncPrincipal>)EOSortOrdering.sortedArrayUsingKeyOrderArray(results, sortOrderings);
       }
-    }
     return results;
   }
   

@@ -18,6 +18,7 @@
             name = deviceUUID; 
             prototypeName = varchar50; 
         }, 
+        {allowsNull = N; name = id; prototypeName = id; }, 
         {
             allowsNull = Y; 
             columnName = lastSync; 
@@ -31,13 +32,13 @@
             prototypeName = varchar50; 
         }
     ); 
-    attributesUsedForLocking = (authRefId, clientAppId, deviceUUID, lastSync, principalUUID); 
+    attributesUsedForLocking = (authRefId, clientAppId, deviceUUID, id, lastSync, principalUUID); 
     className = "er.sync.eo.ERSyncPrincipal"; 
     classProperties = (application, authReference, deviceUUID, lastSync, principalUUID); 
     externalName = ERSyncPrincipal; 
     fetchSpecificationDictionary = {}; 
     name = ERSyncPrincipal; 
-    primaryKeyAttributes = (authRefId, clientAppId, deviceUUID); 
+    primaryKeyAttributes = (id); 
     relationships = (
         {
             destination = ERSyncClientApp; 

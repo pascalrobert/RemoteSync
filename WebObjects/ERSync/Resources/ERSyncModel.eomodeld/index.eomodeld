@@ -59,7 +59,6 @@
         {className = EOGenericRecord; name = ERSyncMMEntityAuthReference; }, 
         {className = "er.sync.eo.ERSyncPrincipal"; name = ERSyncPrincipal; }
     ); 
-    internalInfo = {"_deletedEntityNamesInObjectStore" = (ERSyncPrincipal); }; 
     userInfo = {
         "_EntityModeler" = {
             activeDatabaseConfigName = Default; 

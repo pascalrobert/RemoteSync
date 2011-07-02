@@ -29,13 +29,18 @@ public class ERSyncModel0 extends Migration implements IERXPostMigration
 	public void upgrade(EOEditingContext editingContext, ERXMigrationDatabase database) throws Throwable 
 	{
 		ERXMigrationTable eRSyncPrincipalTable = database.newTableNamed("ERSyncPrincipal");
+		eRSyncPrincipalTable.newIntegerColumn("id", false);
 		eRSyncPrincipalTable.newIntegerColumn("authRefId", false);
 		eRSyncPrincipalTable.newIntegerColumn("clientAppId", false);
 		eRSyncPrincipalTable.newTimestampColumn("lastSync", true);
 		eRSyncPrincipalTable.newStringColumn("deviceUUID", 50, false);
 		eRSyncPrincipalTable.newStringColumn("principalUUID", 50, false);
 		eRSyncPrincipalTable.create();
-	 	eRSyncPrincipalTable.setPrimaryKey("clientAppId", "authRefId", "deviceUUID");
+	 	eRSyncPrincipalTable.setPrimaryKey("id");
+	 	eRSyncPrincipalTable.addUniqueIndex("ERSyncPrincipal_uniqueClientAuthDevice", 
+	 			eRSyncPrincipalTable.existingColumnNamed("clientAppId"), 
+	 			eRSyncPrincipalTable.existingColumnNamed("authRefId"), 
+	 			eRSyncPrincipalTable.existingColumnNamed("deviceUUID"));
 
 		ERXMigrationTable eRSyncCapabilitiesTable = database.newTableNamed("ERSyncCapabilities");
 		eRSyncCapabilitiesTable.newIntegerColumn("id", false);
