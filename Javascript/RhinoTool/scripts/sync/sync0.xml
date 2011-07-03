@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <registration>
+	<!-- these values are secrets already known by the server
+		currenly they can be found in SyncModel0.java migration -->
 	<appid>0c424873-2f0d-4746-b2d5-1735f51d9f52</appid>
-	<device>#DEVICEUUID#</device>
+	<deviceType>B7690018-C84F-4557-98CA-F33CDFE8A2DF</deviceType>
+
+	<!-- these values are only known by the client -->
+	<deviceUUID>#DEVICEUUID#</deviceUUID>
 	<user>#USER#</user>
 	<password>#PASSWORD#</password>
 </registration>

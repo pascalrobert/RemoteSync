@@ -19,7 +19,7 @@
     ); 
     attributesUsedForLocking = (capabilitiesId, disable, id, name, type, uuid); 
     className = "er.sync.eo.ERSyncClientDevice"; 
-    classProperties = (applications, capabilities, disable, name, type, uuid); 
+    classProperties = (applications, capabilities, disable, name, principals, type, uuid); 
     externalName = ERSyncClient; 
     fetchSpecificationDictionary = {}; 
     name = ERSyncClientDevice; 
@@ -42,6 +42,13 @@
             joins = ({destinationAttribute = eRSyncClientDeviceId; sourceAttribute = id; }); 
             name = eRSyncMMAppDevices; 
             propagatesPrimaryKey = Y; 
+        }, 
+        {
+            destination = ERSyncPrincipal; 
+            isToMany = Y; 
+            joinSemantic = EOInnerJoin; 
+            joins = ({destinationAttribute = deviceTypeID; sourceAttribute = id; }); 
+            name = principals; 
         }
     ); 
     restrictingQualifier = "type = 'X'"; 

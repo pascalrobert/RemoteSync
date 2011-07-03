@@ -35,6 +35,8 @@ import er.sync.api.ERXSyncAuthenticator;
 import er.sync.components.ErrorResponse;
 import er.sync.eo.ERSyncChangeValue;
 import er.sync.eo.ERSyncChangeset;
+import er.sync.eo.ERSyncClientApp;
+import er.sync.eo.ERSyncClientDevice;
 import er.sync.eo.ERSyncEntity;
 import er.sync.eo.ERSyncPrincipal;
 
@@ -87,6 +89,25 @@ public abstract class GenericSyncController extends ERXDefaultRouteController
 			NSLog.debug.appendln("Route " + route() );
 
 			throw new SecurityException();
+		}
+		
+		if ( principal().application() == null )
+		{
+			throw new SecurityException("unknown application");
+		}
+		if ( principal().application().disable().booleanValue() == true )
+		{
+			throw new SecurityException("This application '" + principal().application().name() + "' has been disabled" );
+		}
+
+		
+		if ( principal().deviceType() == null )
+		{
+			throw new SecurityException("Unknown device");
+		}
+		if ( principal().deviceType().disable().booleanValue() == true )
+		{
+			throw new SecurityException("This device type '" + principal().deviceType().name() + "' has been disabled" );
 		}
 
 		super.checkAccess();

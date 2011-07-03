@@ -20,6 +20,7 @@ public abstract class _ERSyncPrincipal extends  EOGenericRecord {
 	// Relationships
 	public static final String APPLICATION_KEY = "application";
 	public static final String AUTH_REFERENCE_KEY = "authReference";
+	public static final String DEVICE_TYPE_KEY = "deviceType";
 
   private static Logger LOG = Logger.getLogger(_ERSyncPrincipal.class);
 
@@ -100,15 +101,34 @@ public abstract class _ERSyncPrincipal extends  EOGenericRecord {
     }
   }
   
+  public er.sync.eo.ERSyncClientDevice deviceType() {
+    return (er.sync.eo.ERSyncClientDevice)storedValueForKey("deviceType");
+  }
+
+  public void setDeviceTypeRelationship(er.sync.eo.ERSyncClientDevice value) {
+    if (_ERSyncPrincipal.LOG.isDebugEnabled()) {
+      _ERSyncPrincipal.LOG.debug("updating deviceType from " + deviceType() + " to " + value);
+    }
+    if (value == null) {
+    	er.sync.eo.ERSyncClientDevice oldValue = deviceType();
+    	if (oldValue != null) {
+    		removeObjectFromBothSidesOfRelationshipWithKey(oldValue, "deviceType");
+      }
+    } else {
+    	addObjectToBothSidesOfRelationshipWithKey(value, "deviceType");
+    }
+  }
+  
 
   public static ERSyncPrincipal createERSyncPrincipal(EOEditingContext editingContext, String deviceUUID
 , String principalUUID
-, er.sync.eo.ERSyncClientApp application, er.sync.eo.ERSyncAuthReference authReference) {
+, er.sync.eo.ERSyncClientApp application, er.sync.eo.ERSyncAuthReference authReference, er.sync.eo.ERSyncClientDevice deviceType) {
     ERSyncPrincipal eo = (ERSyncPrincipal) EOUtilities.createAndInsertInstance(editingContext, _ERSyncPrincipal.ENTITY_NAME);    
 		eo.setDeviceUUID(deviceUUID);
 		eo.setPrincipalUUID(principalUUID);
     eo.setApplicationRelationship(application);
     eo.setAuthReferenceRelationship(authReference);
+    eo.setDeviceTypeRelationship(deviceType);
     return eo;
   }
 

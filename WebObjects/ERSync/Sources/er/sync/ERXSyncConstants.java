@@ -24,5 +24,10 @@ public class ERXSyncConstants
 	public static final String CLIENT_INSERT = "insert";
 	public static final String CLIENT_UPDATE = "update";
 	public static final String CLIENT_DELETE = "delete";
+	public static final String REGISTRATION_APPID = "appid";
+	public static final String REGISTRATION_DEVICE_TYPE = "deviceType";
+	public static final String REGISTRATION_DEVICE_UUID = "deviceUUID";
+	public static final String REGISTRATION_USER = "user";
+	public static final String REGISTRATION_PASSWORD = "password";
 
 }

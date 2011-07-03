@@ -32,6 +32,11 @@ import er.sync.eo.ERSyncClientDevice;
 public class ERSyncModel0 extends Migration implements IERXPostMigration
 {
 
+	protected static final String IPHONE_DEVTYPE_UUID = "B7690018-C84F-4557-98CA-F33CDFE8A2DF";
+	protected static final String IPAD_DEVTYPE_UUID = "743E2D47-DDA4-4827-A164-0C61547CD4D5";
+	protected static final String IPODTOUCH_DEVTYPE_UUID = "22BE6EEC-36C3-49AC-BAB7-7946513D9F4E";
+	protected static final String GVC_DEVELOPER_UUID = "D3CD3A87-9C8B-449A-AD6D-20B2098B5112";
+
 	@Override
 	public void downgrade(EOEditingContext arg0, ERXMigrationDatabase arg1)
 	        throws Throwable
@@ -47,6 +52,7 @@ public class ERSyncModel0 extends Migration implements IERXPostMigration
 		eRSyncPrincipalTable.newIntegerColumn("id", false);
 		eRSyncPrincipalTable.newIntegerColumn("authRefId", false);
 		eRSyncPrincipalTable.newIntegerColumn("clientAppId", false);
+		eRSyncPrincipalTable.newIntegerColumn("deviceTypeID", true);
 		eRSyncPrincipalTable.newTimestampColumn("lastSync", true);
 		eRSyncPrincipalTable.newStringColumn("deviceUUID", 50, false);
 		eRSyncPrincipalTable.newStringColumn("principalUUID", 50, false);
@@ -97,6 +103,7 @@ public class ERSyncModel0 extends Migration implements IERXPostMigration
 		eRSyncMMAppDevicesTable.addForeignKey("eRSyncClientDeviceId", "ERSyncClient", "id");
 
 		eRSyncPrincipalTable.addForeignKey("clientAppId", "ERSyncClient", "id");
+		eRSyncPrincipalTable.addForeignKey("deviceTypeID", "ERSyncClient", "id");
 		eRSyncPrincipalTable.addForeignKey("authRefId", "ERSyncAuthReference", "id");
 		eRSyncClientTable.addForeignKey("capabilitiesId", "ERSyncCapabilities", "id");
 		eRSyncClientTable.addForeignKey("developerID", "ERSyncClient", "id");
@@ -106,10 +113,14 @@ public class ERSyncModel0 extends Migration implements IERXPostMigration
 	        throws Throwable
 	{
 	    ERSyncClientDevice iPhoneDevice = ERSyncClientDevice.createERSyncClientDevice(ec, false, "iPhone");
+	    iPhoneDevice.setUuid( IPHONE_DEVTYPE_UUID );
 	    ERSyncClientDevice iPadDevice = ERSyncClientDevice.createERSyncClientDevice(ec, false, "iPad");
+	    iPadDevice.setUuid( IPAD_DEVTYPE_UUID );
 	    ERSyncClientDevice iPodDevice = ERSyncClientDevice.createERSyncClientDevice(ec, false, "iPod Touch");
+	    iPodDevice.setUuid( IPODTOUCH_DEVTYPE_UUID );
 	    
 	    ERSyncClientDeveloper defaultDeveloper = ERSyncClientDeveloper.createERSyncClientDeveloper(ec, false, "Global Village Consulting");
+	    defaultDeveloper.setUuid( GVC_DEVELOPER_UUID );
 	}
 
 }

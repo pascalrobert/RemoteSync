@@ -30,10 +30,19 @@ import er.sync.api.ERXSyncAuthenticator;
 import er.sync.api.ERXSyncUser;
 import er.sync.eo.ERSyncAuthReference;
 import er.sync.eo.ERSyncClientApp;
+import er.sync.eo.ERSyncClientDevice;
 import er.sync.eo.ERSyncEntity;
 import er.sync.eo.ERSyncPrincipal;
 
 /**
+ * The registration controller processes requests from clients.  
+ * It expects to receive an identifier for the client application, 
+ * the identifier for the device type, both of which must be known 
+ * by the service already.  The client must also provide a unique 
+ * identifier for the device and the user authentication.
+ * 
+ * 
+ * 
  * Global Village Consulting
  * @author	David Aspinall
  */
@@ -48,38 +57,8 @@ public class RegistrationController extends GenericSyncController
 	@Override
 	protected void checkAccess() throws SecurityException 
 	{
-	}
-
-
-	@Override
-	public WOActionResults createAction() throws Throwable 
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public WOActionResults destroyAction() throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public WOActionResults indexAction() throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public WOActionResults showAction() throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public WOActionResults updateAction() throws Throwable {
-		// TODO Auto-generated method stub
-		return null;
+		// the parent will deny access if the principal is not known, but 
+		// the purpose of this controller is to create a Principal
 	}
 
 	@POST
@@ -87,26 +66,41 @@ public class RegistrationController extends GenericSyncController
 	public WOActionResults newAction() throws Throwable 
 	{
 		ERXRestRequestNode fullSyncList = new ERXRestRequestNode(ERXSyncConstants.SYNC, null, true);
-		String apikey = (String) requestNode().childNamed("appid").value();
+		String apikey = (String) requestNode().childNamed(ERXSyncConstants.REGISTRATION_APPID).value();
 		ERSyncClientApp app = ERSyncClientApp.fetchRequiredERSyncClientApp(editingContext(), ERSyncClientApp.API_KEY_KEY, apikey);
 		if ( app == null )
 		{
 			throw new SecurityException();
 		}
+		if ( app.disable().booleanValue() == true )
+		{
+			throw new SecurityException("This application '" + app.name() + "' has been disabled" );
+		}
 
-		String deviceUUID = (String) requestNode().childNamed("device").value();
+		String deviceTypekey = (String) requestNode().childNamed(ERXSyncConstants.REGISTRATION_DEVICE_TYPE).value();
+		ERSyncClientDevice type = ERSyncClientDevice.fetchERSyncClientDevice(editingContext(), ERSyncClientDevice.UUID_KEY, deviceTypekey);
+		if ( type == null )
+		{
+			throw new SecurityException();
+		}
+		if ( type.disable().booleanValue() == true )
+		{
+			throw new SecurityException("This device type '" + type.name() + "' has been disabled" );
+		}
+
+		String deviceUUID = (String) requestNode().childNamed(ERXSyncConstants.REGISTRATION_DEVICE_UUID).value();
 		if ( deviceUUID == null )
 		{
 			throw new SecurityException();
 		}
 
-		String username = (String) requestNode().childNamed("user").value();
-		String password = (String) requestNode().childNamed("password").value();
+		String username = (String) requestNode().childNamed(ERXSyncConstants.REGISTRATION_USER).value();
+		String password = (String) requestNode().childNamed(ERXSyncConstants.REGISTRATION_PASSWORD).value();
 		
 		ERXSyncUser user = authorizer().userForCredentials(username, password, editingContext());
 		if ( user == null )
 		{
-			throw new SecurityException();
+			throw new SecurityException("Unknwon user");
 		}
 		
 		ERSyncAuthReference authReference = ERSyncAuthReference.findOrCreateAuthReference( user, editingContext() );
@@ -115,32 +109,21 @@ public class RegistrationController extends GenericSyncController
 			throw new SecurityException();
 		}
 		
+		// it is possible that the same app, on the same device (type and UUID) could be used by different users, but the same user
+
+		
 		ERSyncPrincipal principal = ERSyncPrincipal.principalForUserWithAppidAndDevice(authReference, app, deviceUUID, editingContext());
 		if ( principal == null )
 		{
-			principal = ERSyncPrincipal.createERSyncPrincipal(editingContext(), deviceUUID, UUID.randomUUID().toString(), app, authReference);
+			principal = ERSyncPrincipal.createERSyncPrincipal(editingContext(), deviceUUID, UUID.randomUUID().toString(), app, authReference, type);
 		}
+		setPrincipal(principal);
 		
 		NSArray<String> syncEntityNames = authorizer().syncEntityNames();
 		for ( String entityName : syncEntityNames )
 		{
 			NSArray<EOKeyGlobalID> gidArray = authorizer().syncObjectsForEntityUser(entityName, user, editingContext());
-			for ( EOKeyGlobalID gid : gidArray )
-			{
-				String dataToken = ERXSyncUtilities.syncGIDHashCode(gid);
-				ERSyncEntity syncEntity = ERSyncEntity.fetchERSyncEntity(editingContext(), ERSyncEntity.DATA_SOURCE_TOKEN_KEY, dataToken);
-				if ( syncEntity == null )
-				{
-					syncEntity = ERSyncEntity.createERSyncEntity(editingContext(), ERSyncEntity.VIRGIN, new NSTimestamp());
-					syncEntity.setDataSourceToken( dataToken );
-					syncEntity.setUuid( dataToken );
-				}
-				
-				if ( syncEntity.authReferences().containsObject(authReference) == false )
-				{
-					syncEntity.addToAuthReferencesRelationship(authReference);
-				}
-			}
+			updateSyncEntityArray(gidArray);
 		}
 		
 		editingContext().saveChanges();
